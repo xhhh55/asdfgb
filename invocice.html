@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فاتورة الطلب - JF Sports</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #111;
+      padding: 30px;
+      direction: rtl;
+    }
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      border: 1px solid #eee;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #131921;
+    }
+    table {
+      width: 100%;
+      line-height: 1.6;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table th {
+      background-color: #131921;
+      color: white;
+      padding: 10px;
+    }
+    table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    .total {
+      text-align: left;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .print-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 30px;
+      background-color: #131921;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-box">
+    <h1>فاتورة الطلب</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>المنتج</th>
+          <th>الكمية</th>
+          <th>السعر</th>
+          <th>الإجمالي</th>
+        </tr>
+      </thead>
+      <tbody id="invoice-body"></tbody>
+    </table>
+    <p class="total" id="invoice-total"></p>
+    <button class="print-btn" onclick="window.print()">طباعة الفاتورة</button>
+  </div>  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const body = document.getElementById('invoice-body');
+    const totalEl = document.getElementById('invoice-total');
+
+    let total = 0;
+    cart.forEach(item => {
+      const row = document.createElement('tr');
+      const subtotal = item.price * item.quantity;
+      total += subtotal;
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>$${item.price. (2)}toFixed</td>
+        <td>$${subtotal.toFixed(2)}</td>
+      ;
+      body.appendChild(row);
+    })`;
+
+    totalEl.textContent = `المجموع الكلي: $${total.toFixed(2)}`;
+  </script></body>
+</html>
