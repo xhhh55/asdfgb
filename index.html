@@ -168,6 +168,17 @@
       margin: 0 10px;
       text-decoration: none;
     }
+    @media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+    .product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
   </style>
 </head>
 <body>
